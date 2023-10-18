@@ -1,0 +1,35 @@
+/* from https://aetherhub.com/Docs/Embedding */
+.hover-img-middle a {
+    position: relative;
+}
+.hover-img-middle a span {
+    display: none;
+    z-index: 99;
+    left: 100px;
+    top: -70px;
+    position: absolute;
+    pointer-events: none;
+}
+.hover-img-middle a:hover span {
+    display: block;
+}
+.hover-img-middle a span img {
+    border-radius: 10px;
+}
+.hover-img-top a {
+    position: relative;
+}
+.hover-img-top a span {
+    display: none;
+    z-index: 99;
+    left: 100px;
+    top: -290px;
+    position: absolute;
+    pointer-events: none;
+}
+.hover-img-top a:hover span {
+    display: block;
+}
+.hover-img-top a span img {
+    border-radius: 10px;
+}
