@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+<form class="form-inline">
+  <div class="form-group row">
+    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Card</label>
+    <div class="col-sm-10">
+      <input id="card-input" type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="card" onkeydown="search(event)">
+    </div>
+  </div>
+</form>
+</div>
+
+<xmp id="output"></xmp>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script>
+  async function search(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      await fetch(`https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(document.getElementById("card-input").value)}`, {'method': 'GET'})
+              .then(response => response.json())
+              .then(response => {
+                  let x = document.getElementById("output");
+                  x.innerHTML = `<div class="hover-img-middle">\n\t<a href="${response.scryfall_uri}" target="_blank">\n\t\t<b>${response.name}</b>\n\t\t<span>\n\t\t\t<img src="${response.image_uris.large}" class="ae-card-hover-img" alt="image" height="311" width="223">\n\t\t</span>\n\t</a>\n</div>`;
+              });
+    }
+  }
+</script>
+</body>
+</html>
