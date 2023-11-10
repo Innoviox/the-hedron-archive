@@ -1,4 +1,7 @@
 /* from https://aetherhub.com/Docs/Embedding */
+.hover-img-middle {
+    display: inline;
+}
 .hover-img-middle a {
     position: relative;
 }
